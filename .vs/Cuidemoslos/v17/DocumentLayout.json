@@ -1,0 +1,357 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\outbox\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\outbox\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\outbox\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\outbox\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{402E2EA9-1A22-434D-86AA-EDF0B11CE07A}|Cuidemoslos.Services\\Cuidemoslos.Services.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.services\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{402E2EA9-1A22-434D-86AA-EDF0B11CE07A}|Cuidemoslos.Services\\Cuidemoslos.Services.csproj|solutionrelative:cuidemoslos.services\\dependencyinjection\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{402E2EA9-1A22-434D-86AA-EDF0B11CE07A}|Cuidemoslos.Services\\Cuidemoslos.Services.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.services\\email\\fileemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{402E2EA9-1A22-434D-86AA-EDF0B11CE07A}|Cuidemoslos.Services\\Cuidemoslos.Services.csproj|solutionrelative:cuidemoslos.services\\email\\fileemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\patients\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\patients\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\patients\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\patients\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\patients\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\patients\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\patients\\new.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\patients\\new.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\logs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\logs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\logs\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\logs\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\notifications\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\notifications\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\notifications\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\notifications\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\patients\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\patients\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\pages\\patients\\detail.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\pages\\patients\\detail.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|c:\\users\\gian\\onedrive - universidad abierta interamericana\\desktop\\cuidemoslos\\cuidemoslos.web\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6D9DBFBB-BCE5-49DC-A63B-C6F848E91D3F}|Cuidemoslos.Web\\Cuidemoslos.Web.csproj|solutionrelative:cuidemoslos.web\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T20:17:56.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Outbox\\Index.cshtml.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T20:17:27.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Services\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Cuidemoslos.Services\\DependencyInjection\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T20:16:05.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FileEmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\Email\\FileEmailSender.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Services\\Email\\FileEmailSender.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\Email\\FileEmailSender.cs",
+              "RelativeToolTip": "Cuidemoslos.Services\\Email\\FileEmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T20:11:55.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Program.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Program.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Program.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAqwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T18:15:03.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:55:26.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:47:48.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Patients\\Index.cshtml.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAqwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:47:11.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Index.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Index.cshtml.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T18:13:59.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Index.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T18:14:25.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Cuidemoslos.Web\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-09T19:02:28.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "New.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\New.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Patients\\New.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\New.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Patients\\New.cshtml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA8wBoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:49:02.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:50:51.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAqwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:51:38.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:53:05.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "New.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\New.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Patients\\New.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\New.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Patients\\New.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:49:37.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Detail.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Patients\\Detail.cshtml.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAqwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:50:23.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:44:08.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Notifications\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-09T09:52:08.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml.cs",
+              "RelativeToolTip": "Cuidemoslos.Web\\Pages\\Logs\\Index.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-09T09:52:42.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\wwwroot\\css\\styles.css",
+              "RelativeDocumentMoniker": "Cuidemoslos.Web\\wwwroot\\css\\styles.css",
+              "ToolTip": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\wwwroot\\css\\styles.css",
+              "RelativeToolTip": "Cuidemoslos.Web\\wwwroot\\css\\styles.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-09T09:45:35.964Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

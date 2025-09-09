@@ -1,0 +1,21 @@
+﻿@page
+@model Cuidemoslos.Web.Pages.Outbox.IndexModel
+@{
+    ViewData["Title"] = "Outbox";
+}
+<section class="card">
+    <h2>Outbox (mails simulados)</h2>
+    <p>Se guardan en <code>wwwroot/outbox</code>. Clic para abrir.</p>
+    <ul class="list">
+        @foreach (var it in Model.Items)
+        {
+            <li>
+                @it.Created.ToLocalTime(): <a class="link" href="@it.Url" target="_blank">@it.Name</a>
+            </li>
+        }
+        @if (!Model.Items.Any())
+        {
+            <li>No hay mensajes aún.</li>
+        }
+    </ul>
+</section>

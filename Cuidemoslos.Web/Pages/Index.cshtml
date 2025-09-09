@@ -1,0 +1,17 @@
+﻿@page
+@model Cuidemoslos.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Panel";
+}
+<section class="card">
+    <h2>Panel</h2>
+    <div class="list">
+        <div>Pacientes: <strong>@Model.PatientsCount</strong></div>
+        <div>Alertas hoy: <strong class="kpi warn">@Model.AlertsToday</strong></div>
+    </div>
+    <p>
+        <a class="link" asp-page="/Patients/Index">Ir a Pacientes</a> ·
+        <a class="link" asp-page="/Notifications/Index">Notificaciones</a> ·
+        <a class="link" asp-page="/Logs/Index">Bitácora</a>
+    </p>
+</section>

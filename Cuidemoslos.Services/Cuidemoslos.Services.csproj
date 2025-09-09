@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Cuidemoslos.DAL\Cuidemoslos.DAL.csproj" />
+		<ProjectReference Include="..\Cuidemoslos.Domain\Cuidemoslos.Domain.csproj" />
+		<ProjectReference Include="..\Cuidemoslos.BLL\Cuidemoslos.BLL.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.3.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.8" />
+		<PackageReference Include="MailKit" Version="4.13.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Notifications\" />
+	</ItemGroup>
+</Project>

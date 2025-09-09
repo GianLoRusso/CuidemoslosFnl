@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@model Cuidemoslos.Web.Pages.Patients.DetailModel
+@{
+    ViewData["Title"] = "Paciente";
+}
+<section class="card">
+    <h2>@Model.Patient?.FullName</h2>
+    <p>@Model.Patient?.Email</p>
+</section>
+
+<section class="card">
+    <h3>Registrar estado de ánimo</h3>
+    <form method="post">
+        <label>Score (1..5)</label>
+        <input asp-for="Score" type="number" min="1" max="5" />
+        <label>Notas</label>
+        <input asp-for="Notes" />
+        <label>Email profesional (alertas)</label>
+        <input asp-for="ProEmail" type="email" />
+        <button type="submit">Guardar</button>
+    </form>
+</section>
+
+<section class="card">
+    <h3>Historial</h3>
+    <ul class="list">
+        @foreach (var e in Model.Entries)
+        {
+            <li>@e.CreatedAt.ToLocalTime(): Score <b>@e.Score</b> · @e.Notes</li>
+        }
+    </ul>
+</section>
+

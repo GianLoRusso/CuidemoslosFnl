@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Cuidemoslos API",
+    "description": "Endpoints para la app del paciente y panel del profesional",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/mood": {
+      "post": {
+        "tags": [
+          "Cuidemoslos.Web"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "score",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "notes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "proEmail",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

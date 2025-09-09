@@ -1,0 +1,21 @@
+﻿@page
+@model Cuidemoslos.Web.Pages.Patients.IndexModel
+@{
+    ViewData["Title"] = "Pacientes";
+}
+<section class="card">
+    <h2>Pacientes</h2>
+    <p>
+        <a class="link" asp-page="New">+ Nuevo</a>
+    </p>
+    <ul class="list">
+        @foreach (var p in Model.Patients)
+        {
+            <li>
+                <a class="link" asp-page="Detail" asp-route-id="@p.Id">
+                    @p.FullName
+                </a> · @p.Email
+            </li>
+        }
+    </ul>
+</section>

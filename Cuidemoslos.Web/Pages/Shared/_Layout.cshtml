@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+    var title = ViewData["Title"] as string ?? "Cuidémoslos";
+}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>@title</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg">
+    <header class="topbar">
+        <div class="brand">Cuidémoslos</div>
+        <nav>
+            <a asp-page="/Patients/Index">Pacientes</a>
+            <a asp-page="/Notifications/Index">Notificaciones</a>
+            <a asp-page="/Logs/Index">Bitácora</a>
+            <a asp-page="/Outbox/Index">Outbox</a>
+
+        </nav>
+    </header>
+    <main class="wrap">
+        @RenderBody()
+    </main>
+</body>
+</html>

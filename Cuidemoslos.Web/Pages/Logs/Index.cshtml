@@ -1,0 +1,15 @@
+﻿@page
+@model Cuidemoslos.Web.Pages.Logs.IndexModel
+@{
+    ViewData["Title"] = "Bitácora";
+}
+<section class="card">
+    <h2>Bitácora</h2>
+    <ul class="list">
+        @foreach (var l in Model.Logs)
+        {
+            <li>[@l.Level] @l.Action — @l.Data — @l.CreatedAt.ToLocalTime()</li>
+        }
+    </ul>
+</section>
+

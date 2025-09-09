@@ -1,0 +1,21 @@
+﻿@page
+@model Cuidemoslos.Web.Pages.Patients.NewModel
+@{
+    ViewData["Title"] = "Nuevo Paciente";
+}
+<section class="card">
+    <h2>Nuevo paciente</h2>
+    <form method="post">
+        <div asp-validation-summary="All" style="color:red"></div> <!-- ✅ muestra mensajes -->
+
+        <label>Nombre completo</label>
+        <input asp-for="FullName" required />
+
+        <label>Email</label>
+        <input asp-for="Email" type="email" required />
+
+        <button type="submit">Guardar</button>
+    </form>
+</section>
+
+

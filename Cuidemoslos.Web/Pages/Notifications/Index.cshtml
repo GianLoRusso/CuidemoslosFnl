@@ -1,0 +1,15 @@
+﻿@page
+@model Cuidemoslos.Web.Pages.Notifications.IndexModel
+@{
+    ViewData["Title"] = "Notificaciones";
+}
+<section class="card">
+    <h2>Notificaciones</h2>
+    <ul class="list">
+        @foreach (var item in Model.Items)
+        {
+            <li><strong>@item.Patient</strong> — @item.N.Subject · @item.N.CreatedAt.ToLocalTime()</li>
+        }
+    </ul>
+</section>
+
