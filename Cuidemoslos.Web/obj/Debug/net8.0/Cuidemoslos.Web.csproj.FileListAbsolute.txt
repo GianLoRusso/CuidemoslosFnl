@@ -160,6 +160,7 @@ C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemos.DBA7EB06.Up2Date
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\refint\Cuidemoslos.Web.dll

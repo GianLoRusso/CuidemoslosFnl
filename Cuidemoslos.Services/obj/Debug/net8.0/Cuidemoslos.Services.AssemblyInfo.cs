@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cuidemoslos.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16b5bc616a7cc326dd774291760b7bbd19e4d19d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2698a0ba658ad182e42baff027c47072dc71ac62")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cuidemoslos.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cuidemoslos.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

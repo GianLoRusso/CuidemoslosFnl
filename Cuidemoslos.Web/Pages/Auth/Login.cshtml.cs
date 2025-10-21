@@ -12,7 +12,9 @@ public class LoginModel : PageModel
 
     [BindProperty] public string User { get; set; } = "";
     [BindProperty] public string Password { get; set; } = "";
-    public string? Error { get; set; }
+
+    // >>> propiedad que usa la vista
+    public string? ErrorMessage { get; set; }
 
     public void OnGet() { }
 
@@ -29,7 +31,7 @@ public class LoginModel : PageModel
             return Redirect(returnUrl ?? "/");
         }
 
-        Error = "Usuario o contraseña inválidos.";
+        ErrorMessage = "Usuario o contraseña inválidos.";
         return Page();
     }
 }
