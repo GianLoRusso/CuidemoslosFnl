@@ -1,0 +1,13 @@
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\bin\Debug\net8.0\Cuidemoslos.Domain.deps.json
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\bin\Debug\net8.0\Cuidemoslos.Domain.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\bin\Debug\net8.0\Cuidemoslos.Domain.pdb
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.csproj.AssemblyReference.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.AssemblyInfoInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.AssemblyInfo.cs
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.sourcelink.json
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\refint\Cuidemoslos.Domain.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\Cuidemoslos.Domain.pdb
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Domain\obj\Debug\net8.0\ref\Cuidemoslos.Domain.dll

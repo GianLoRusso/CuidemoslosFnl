@@ -1,0 +1,6 @@
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Services\obj\Debug\net8.0\Cuidemoslos.Services.csproj.AssemblyReference.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Services\obj\Debug\net8.0\Cuidemoslos.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Services\obj\Debug\net8.0\Cuidemoslos.Services.AssemblyInfoInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Services\obj\Debug\net8.0\Cuidemoslos.Services.AssemblyInfo.cs
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Services\obj\Debug\net8.0\Cuidemoslos.Services.csproj.CoreCompileInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Services\obj\Debug\net8.0\Cuidemoslos.Services.sourcelink.json

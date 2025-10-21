@@ -1,0 +1,6 @@
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.DAL\obj\Debug\net8.0\Cuidemoslos.DAL.csproj.AssemblyReference.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.DAL\obj\Debug\net8.0\Cuidemoslos.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.DAL\obj\Debug\net8.0\Cuidemoslos.DAL.AssemblyInfoInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.DAL\obj\Debug\net8.0\Cuidemoslos.DAL.AssemblyInfo.cs
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.DAL\obj\Debug\net8.0\Cuidemoslos.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.DAL\obj\Debug\net8.0\Cuidemoslos.DAL.sourcelink.json

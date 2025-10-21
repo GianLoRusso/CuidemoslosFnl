@@ -68,6 +68,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cuidemoslos API v1");
     c.RoutePrefix = "swagger"; 
 });
+app.MapSwagger().AllowAnonymous();
 
 using (var scope = app.Services.CreateScope())
 {

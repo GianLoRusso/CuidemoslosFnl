@@ -1,0 +1,10 @@
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.csproj.AssemblyReference.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.AssemblyInfoInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.AssemblyInfo.cs
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.csproj.CoreCompileInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.RazorAssemblyInfo.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.RazorAssemblyInfo.cs
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\obj\Debug\net8.0\Cuidemoslos.Web.sourcelink.json
