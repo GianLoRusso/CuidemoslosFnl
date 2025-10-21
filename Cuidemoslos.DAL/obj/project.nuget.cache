@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "V6AE+9FE2cQ=",
+  "dgSpecHash": "c6PkHFh3k40=",
   "success": true,
   "projectFilePath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.DAL\\Cuidemoslos.DAL.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Gian\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\Gian\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.build.framework\\17.8.3\\microsoft.build.framework.17.8.3.nupkg.sha512",

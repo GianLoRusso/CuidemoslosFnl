@@ -4,10 +4,13 @@ using Cuidemoslos.Services.DependencyInjection;
 using Cuidemoslos.Services.Email;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using FluentValidation;
+using Cuidemoslos.Domain.Validation;
 using Cuidemoslos.DAL.Persistence;
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddValidatorsFromAssemblyContaining<PatientValidator>();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))); // Postgres
@@ -24,7 +27,38 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddHealthChecks();
 
+builder.Services.AddAuthentication("cookie")
+    .AddCookie("cookie", o =>
+    {
+        o.LoginPath = "/Auth/Login";
+        o.AccessDeniedPath = "/Auth/Login";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = options.DefaultPolicy; // exige auth por defecto
+});
+
+
 var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
+app.Use(async (ctx, next) =>
+{
+    if (ctx.Request.Path.StartsWithSegments("/api"))
+    {
+        var key = ctx.Request.Headers["X-Api-Key"].FirstOrDefault();
+        var expected = app.Configuration["API_KEY"];
+        if (string.IsNullOrEmpty(expected) || key != expected)
+        {
+            ctx.Response.StatusCode = 401;
+            await ctx.Response.WriteAsync("Unauthorized");
+            return;
+        }
+    }
+    await next();
+});
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {

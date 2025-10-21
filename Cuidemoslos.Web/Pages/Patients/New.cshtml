@@ -3,19 +3,39 @@
 @{
     ViewData["Title"] = "Nuevo Paciente";
 }
+
 <section class="card">
-    <h2>Nuevo paciente</h2>
+    <h2>Registrar nuevo paciente</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <p class="kpi ok">@TempData["Message"]</p>
+    }
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <ul class="kpi warn">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    }
+
     <form method="post">
-        <div asp-validation-summary="All" style="color:red"></div> <!-- ✅ muestra mensajes -->
+        <div class="form-row">
+            <label for="FullName">Nombre completo</label>
+            <input id="FullName" asp-for="FullName" class="form-control" placeholder="Ej: Juan Pérez" />
+        </div>
 
-        <label>Nombre completo</label>
-        <input asp-for="FullName" required />
+        <div class="form-row">
+            <label for="Email">Correo electrónico</label>
+            <input id="Email" asp-for="Email" class="form-control" placeholder="ejemplo@correo.com" />
+        </div>
 
-        <label>Email</label>
-        <input asp-for="Email" type="email" required />
-
-        <button type="submit">Guardar</button>
+        <div class="form-row">
+            <button type="submit" class="btn">Guardar</button>
+            <a asp-page="Index" class="link">Cancelar</a>
+        </div>
     </form>
 </section>
-
-
