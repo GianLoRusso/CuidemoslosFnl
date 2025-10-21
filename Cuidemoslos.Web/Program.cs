@@ -4,11 +4,13 @@ using Cuidemoslos.Services.DependencyInjection;
 using Cuidemoslos.Services.Email;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Cuidemoslos.DAL.Persistence;
 
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlite("Data Source=cuidemoslos.db"));
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))); // Postgres
 builder.Services.AddCuidemoslosServices();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -33,7 +35,7 @@ app.UseSwaggerUI(c =>
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.EnsureCreated();
+    db.Database.Migrate();
 }
 
 app.MapPost("/api/mood", async (

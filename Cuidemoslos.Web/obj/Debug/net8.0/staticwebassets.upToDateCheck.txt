@@ -62,3 +62,6 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\outbox\20250909_202609_Alerta Cuidémoslos_ Estado crítico de Prueba.html
+wwwroot\outbox\20250909_225529_Alerta Cuidémoslos_ Estado crítico de Juan.html
+wwwroot\outbox\20250909_225826_Alerta Cuidémoslos_ Estado crítico de Juan.html
