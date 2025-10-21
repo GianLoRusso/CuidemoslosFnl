@@ -27,17 +27,20 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddHealthChecks();
 
+
 builder.Services.AddAuthentication("cookie")
-    .AddCookie("cookie", o =>
+    .AddCookie("cookie", options =>
     {
-        o.LoginPath = "/Auth/Login";
-        o.AccessDeniedPath = "/Auth/Login";
+        options.LoginPath = "/Auth/Login";
+        options.AccessDeniedPath = "/Auth/Login";
     });
 
 builder.Services.AddAuthorization(options =>
 {
-    options.FallbackPolicy = options.DefaultPolicy; // exige auth por defecto
+    // por defecto exige login en todas las páginas
+    options.FallbackPolicy = options.DefaultPolicy;
 });
+
 
 
 var app = builder.Build();

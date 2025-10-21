@@ -2,24 +2,28 @@
 @model Cuidemoslos.Web.Pages.Auth.LoginModel
 @attribute [Microsoft.AspNetCore.Authorization.AllowAnonymous]
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Ingreso al sistema";
 }
+
 <section class="card">
-    <h2>Ingreso</h2>
+    <h2>Acceso profesional</h2>
+
     @if (!string.IsNullOrEmpty(Model.Error))
     {
         <p class="kpi warn">@Model.Error</p>
     }
+
     <form method="post">
         <div class="form-row">
             <label>Usuario</label>
-            <input asp-for="User" />
+            <input asp-for="User" placeholder="admin@cuidemoslos" />
         </div>
+
         <div class="form-row">
             <label>Contraseña</label>
-            <input asp-for="Password" type="password" />
+            <input asp-for="Password" type="password" placeholder="******" />
         </div>
-        <button type="submit" class="btn">Entrar</button>
+
+        <button type="submit" class="btn">Ingresar</button>
     </form>
 </section>
-

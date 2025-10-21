@@ -12,4 +12,3 @@ public class LogoutModel : PageModel
         return RedirectToPage("/Auth/Login");
     }
 }
-

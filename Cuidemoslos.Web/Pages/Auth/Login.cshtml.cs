@@ -14,16 +14,16 @@ public class LoginModel : PageModel
     [BindProperty] public string Password { get; set; } = "";
     public string? Error { get; set; }
 
-    public void OnGet(string? returnUrl = null) { }
+    public void OnGet() { }
 
     public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
     {
-        var okUser = _cfg["Auth:User"] ?? "admin@cuidemoslos";
-        var okPass = _cfg["Auth:Password"] ?? "admin123";
+        var okUser = _cfg["Auth:User"];
+        var okPass = _cfg["Auth:Password"];
 
         if (User == okUser && Password == okPass)
         {
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, okUser) };
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, okUser ?? "admin") };
             var id = new ClaimsIdentity(claims, "cookie");
             await HttpContext.SignInAsync("cookie", new ClaimsPrincipal(id));
             return Redirect(returnUrl ?? "/");
