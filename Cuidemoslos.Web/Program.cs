@@ -1,20 +1,31 @@
 using Cuidemoslos.DAL.Persistence;
 using Cuidemoslos.Domain.Entities;
+using Cuidemoslos.Domain.Validation;
 using Cuidemoslos.Services.DependencyInjection;
 using Cuidemoslos.Services.Email;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using FluentValidation;
-using Cuidemoslos.Domain.Validation;
-using Cuidemoslos.DAL.Persistence;
-
 
 var builder = WebApplication.CreateBuilder(args);
+
+// --- Razor Pages (login anónimo) ---
+builder.Services.AddRazorPages(o =>
+{
+    o.Conventions.AllowAnonymousToFolder("/Auth");
+});
+
+// --- Validadores (FluentValidation) ---
 builder.Services.AddValidatorsFromAssemblyContaining<PatientValidator>();
-builder.Services.AddRazorPages();
+
+// --- EF Core / PostgreSQL ---
 builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))); // Postgres
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+
+// --- Servicios propios (correo, etc.) ---
 builder.Services.AddCuidemoslosServices();
+
+// --- Swagger ---
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -25,36 +36,44 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Endpoints para la app del paciente y panel del profesional"
     });
 });
+
+// --- Healthchecks ---
 builder.Services.AddHealthChecks();
 
-
+// --- Auth por cookies (toda la web protegida excepto /Auth/*) ---
 builder.Services.AddAuthentication("cookie")
-    .AddCookie("cookie", options =>
+    .AddCookie("cookie", o =>
     {
-        options.LoginPath = "/Auth/Login";
-        options.AccessDeniedPath = "/Auth/Login";
+        o.LoginPath = "/Auth/Login";
+        o.AccessDeniedPath = "/Auth/Login";
     });
 
 builder.Services.AddAuthorization(options =>
 {
-    // por defecto exige login en todas las páginas
+    // Exigir login por defecto en todo
     options.FallbackPolicy = options.DefaultPolicy;
 });
 
-
-
 var app = builder.Build();
+
+// --- Archivos estáticos (css/js/img) ---
+app.UseStaticFiles();
+
+// --- Auth/Authorization ---
 app.UseAuthentication();
 app.UseAuthorization();
+
+// --- API Key middleware para /api/* ---
 app.Use(async (ctx, next) =>
 {
     if (ctx.Request.Path.StartsWithSegments("/api"))
     {
-        var key = ctx.Request.Headers["X-Api-Key"].FirstOrDefault();
-        var expected = app.Configuration["API_KEY"];
-        if (string.IsNullOrEmpty(expected) || key != expected)
+        var provided = ctx.Request.Headers["X-Api-Key"].FirstOrDefault();
+        var expected = app.Configuration["API_KEY"]; // defínelo en Render
+
+        if (string.IsNullOrEmpty(expected) || provided != expected)
         {
-            ctx.Response.StatusCode = 401;
+            ctx.Response.StatusCode = StatusCodes.Status401Unauthorized;
             await ctx.Response.WriteAsync("Unauthorized");
             return;
         }
@@ -62,20 +81,26 @@ app.Use(async (ctx, next) =>
     await next();
 });
 
+// --- Swagger (público) ---
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cuidemoslos API v1");
-    c.RoutePrefix = "swagger"; 
+    c.RoutePrefix = "swagger";
 });
 app.MapSwagger().AllowAnonymous();
 
+// --- Healthcheck (público) ---
+app.MapHealthChecks("/health").AllowAnonymous();
+
+// --- Migración DB al iniciar ---
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
 }
 
+// --- Endpoint API (app paciente) ---
 app.MapPost("/api/mood", async (
     AppDbContext db,
     IEmailSender email,
@@ -86,7 +111,12 @@ app.MapPost("/api/mood", async (
 
     var entry = new MoodEntry { PatientId = patientId, Score = score, Notes = notes };
     db.MoodEntries.Add(entry);
-    db.AuditLogs.Add(new AuditLog { Action = "MoodEntry.Created", Level = "Info", Data = $"PatientId={patientId};Score={score}" });
+    db.AuditLogs.Add(new AuditLog
+    {
+        Action = "MoodEntry.Created",
+        Level = "Info",
+        Data = $"PatientId={patientId};Score={score}"
+    });
 
     try
     {
@@ -94,22 +124,41 @@ app.MapPost("/api/mood", async (
         {
             var subject = $"Alerta Cuidémoslos: Estado crítico de {p.FullName}";
             var body = $"<p>El paciente <b>{p.FullName}</b> reportó estado <b>Muy bajo ({score})</b>.</p>";
+
             await email.SendAsync(proEmail, subject, body);
-            db.Notifications.Add(new Notification { PatientId = patientId, Subject = subject, Body = body });
-            db.AuditLogs.Add(new AuditLog { Action = "Email.Sent", Level = "Info", Data = $"To={proEmail}" });
+
+            db.Notifications.Add(new Notification
+            {
+                PatientId = patientId,
+                Subject = subject,
+                Body = body
+            });
+
+            db.AuditLogs.Add(new AuditLog
+            {
+                Action = "Email.Sent",
+                Level = "Info",
+                Data = $"To={proEmail}"
+            });
         }
+
         await db.SaveChangesAsync();
         return Results.Ok(new { ok = true });
     }
     catch (Exception ex)
     {
-        db.AuditLogs.Add(new AuditLog { Action = "Email.Error", Level = "Error", Data = ex.Message });
+        db.AuditLogs.Add(new AuditLog
+        {
+            Action = "Email.Error",
+            Level = "Error",
+            Data = ex.Message
+        });
         await db.SaveChangesAsync();
         return Results.Problem("No se pudo enviar notificación.");
     }
 });
-app.MapHealthChecks("/health");
-app.UseStaticFiles();
-app.MapRazorPages();
-app.Run();
 
+// --- Razor Pages ---
+app.MapRazorPages();
+
+app.Run();

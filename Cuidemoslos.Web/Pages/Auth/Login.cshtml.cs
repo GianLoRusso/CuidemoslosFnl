@@ -20,6 +20,11 @@ public class LoginModel : PageModel
 
     public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
     {
+        // Sanear ReturnUrl: si viene vacío o apunta a /Auth/*, mandamos a home
+        if (string.IsNullOrEmpty(returnUrl) ||
+            returnUrl.StartsWith("/Auth", StringComparison.OrdinalIgnoreCase))
+            returnUrl = "/";
+
         var okUser = _cfg["Auth:User"];
         var okPass = _cfg["Auth:Password"];
 
