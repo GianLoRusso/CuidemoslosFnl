@@ -8,6 +8,7 @@ C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\Cuidemoslos.BLL.AssemblyInfoInputs.cache
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\Cuidemoslos.BLL.AssemblyInfo.cs
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\Cuidemoslos.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\Cuidemoslos.BLL.sourcelink.json
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\Cuidemos.1756E8CB.Up2Date
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\Cuidemoslos.BLL.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.BLL\obj\Debug\net8.0\refint\Cuidemoslos.BLL.dll
