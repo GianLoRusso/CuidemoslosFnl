@@ -1,31 +1,125 @@
-html {
-  font-size: 14px;
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" / >
+
+:root {
+    --primary: #2563eb;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+* {
+    box-sizing: border-box
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    margin: 0;
+    background: #fafafa;
+    color: #111
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+h2 {
+    margin: 8px 0 16px
 }
+
+.muted {
+    color: #666
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden
+}
+
+    .table th, .table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid #eee
+    }
+
+    .table thead {
+        background: #f6f7fb
+    }
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff
+}
+
+    .btn.primary {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary)
+    }
+
+.form .field {
+    margin-bottom: 12px
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff
+}
+
+.flex {
+    display: flex
+}
+
+.gap-2 {
+    gap: .5rem
+}
+
+.gap-4 {
+    gap: 1rem
+}
+
+.items-center {
+    align-items: center
+}
+
+.justify-between {
+    justify-content: space-between
+}
+
+.grid {
+    display: grid
+}
+
+.grid-cols-2 {
+    grid-template-columns: 1fr 1fr
+}
+
+.gap-6 {
+    gap: 1.5rem
+}
+
+.text-danger {
+    color: #b91c1c
+}
+
+.truncate {
+    max-width: 520px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+nav a {
+    color: #111;
+    text-decoration: none
+}
+
+    nav a:hover {
+        text-decoration: underline
+    }

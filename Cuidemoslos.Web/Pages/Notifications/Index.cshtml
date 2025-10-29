@@ -3,13 +3,19 @@
 @{
     ViewData["Title"] = "Notificaciones";
 }
-<section class="card">
+<section class="container">
     <h2>Notificaciones</h2>
-    <ul class="list">
-        @foreach (var item in Model.Items)
-        {
-            <li><strong>@item.Patient</strong> — @item.N.Subject · @item.N.CreatedAt.ToLocalTime()</li>
-        }
-    </ul>
+    <table class="table">
+        <thead><tr><th>Fecha</th><th>Asunto</th><th>Paciente</th></tr></thead>
+        <tbody>
+            @foreach (var n in Model.Items)
+            {
+                <tr>
+                    <td>@n.CreatedAt.ToString("g")</td>
+                    <td>@n.Subject</td>
+                    <td>@n.Patient</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </section>
-

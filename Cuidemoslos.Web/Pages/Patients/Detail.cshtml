@@ -1,33 +1,45 @@
 ﻿@page "{id:int}"
-@model Cuidemoslos.Web.Pages.Patients.DetailModel
+@model Cuidemoslos.Web.Pages.Patients.DetailsModel
 @{
-    ViewData["Title"] = "Paciente";
+    ViewData["Title"] = "Detalle del paciente";
+    var p = Model.Patient!;
 }
-<section class="card">
-    <h2>@Model.Patient?.FullName</h2>
-    <p>@Model.Patient?.Email</p>
-</section>
+<section class="container">
+    <a asp-page="Index">← Volver</a>
+    <h2>@p.FullName</h2>
+    <p class="muted">@p.Email · Alta: @p.CreatedAt.ToString("yyyy-MM-dd")</p>
 
-<section class="card">
-    <h3>Registrar estado de ánimo</h3>
-    <form method="post">
-        <label>Score (1..5)</label>
-        <input asp-for="Score" type="number" min="1" max="5" />
-        <label>Notas</label>
-        <input asp-for="Notes" />
-        <label>Email profesional (alertas)</label>
-        <input asp-for="ProEmail" type="email" />
-        <button type="submit">Guardar</button>
-    </form>
+    <div class="grid grid-cols-2 gap-6">
+        <div>
+            <h3>Últimos estados</h3>
+            <table class="table">
+                <thead><tr><th>Fecha</th><th>Score</th><th>Notas</th></tr></thead>
+                <tbody>
+                    @foreach (var m in p.Mood)
+                    {
+                        <tr>
+                            <td>@m.CreatedAt.ToString("g")</td>
+                            <td><strong>@m.Score</strong></td>
+                            <td>@m.Notes</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3>Notificaciones enviadas</h3>
+            <table class="table">
+                <thead><tr><th>Fecha</th><th>Asunto</th></tr></thead>
+                <tbody>
+                    @foreach (var n in p.Notifications)
+                    {
+                        <tr>
+                            <td>@n.CreatedAt.ToString("g")</td>
+                            <td>@n.Subject</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
-
-<section class="card">
-    <h3>Historial</h3>
-    <ul class="list">
-        @foreach (var e in Model.Entries)
-        {
-            <li>@e.CreatedAt.ToLocalTime(): Score <b>@e.Score</b> · @e.Notes</li>
-        }
-    </ul>
-</section>
-

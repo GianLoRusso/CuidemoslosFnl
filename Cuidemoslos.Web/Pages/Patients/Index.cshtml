@@ -3,19 +3,27 @@
 @{
     ViewData["Title"] = "Pacientes";
 }
-<section class="card">
-    <h2>Pacientes</h2>
-    <p>
-        <a class="link" asp-page="New">+ Nuevo</a>
-    </p>
-    <ul class="list">
-        @foreach (var p in Model.Patients)
-        {
-            <li>
-                <a class="link" asp-page="Detail" asp-route-id="@p.Id">
-                    @p.FullName
-                </a> · @p.Email
-            </li>
-        }
-    </ul>
+<section class="container">
+    <div class="flex items-center justify-between">
+        <h2>Pacientes</h2>
+        <a class="btn" asp-page="New">+ Nuevo</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr><th>Nombre</th><th>Email</th><th>Alta</th><th>Alertas</th><th></th></tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Patients)
+            {
+                <tr>
+                    <td>@p.FullName</td>
+                    <td>@p.Email</td>
+                    <td>@p.CreatedAt.ToString("yyyy-MM-dd")</td>
+                    <td>@p.AlertsCount</td>
+                    <td><a asp-page="Details" asp-route-id="@p.Id">Ver</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </section>
+

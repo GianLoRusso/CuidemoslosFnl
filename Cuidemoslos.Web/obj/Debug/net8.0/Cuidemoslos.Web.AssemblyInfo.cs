@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cuidemoslos.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7446a5ba041692d92d242b76241d68aec44bc6aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fec17622a4a78018a4b712efcfa273c6ed6e7fea")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cuidemoslos.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cuidemoslos.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

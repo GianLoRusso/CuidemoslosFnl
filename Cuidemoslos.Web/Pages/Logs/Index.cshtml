@@ -3,13 +3,20 @@
 @{
     ViewData["Title"] = "Bitácora";
 }
-<section class="card">
+<section class="container">
     <h2>Bitácora</h2>
-    <ul class="list">
-        @foreach (var l in Model.Logs)
-        {
-            <li>[@l.Level] @l.Action — @l.Data — @l.CreatedAt.ToLocalTime()</li>
-        }
-    </ul>
+    <table class="table">
+        <thead><tr><th>Fecha</th><th>Nivel</th><th>Acción</th><th>Datos</th></tr></thead>
+        <tbody>
+            @foreach (var a in Model.Items)
+            {
+                <tr>
+                    <td>@a.CreatedAt.ToString("g")</td>
+                    <td>@a.Level</td>
+                    <td>@a.Action</td>
+                    <td class="truncate">@a.Data</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </section>
-

@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Cuidemoslos.DAL.Persistence;
+﻿using Cuidemoslos.DAL.Persistence;
 using Cuidemoslos.Domain.Entities;
 using FluentValidation;
-using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cuidemoslos.Web.Pages.Patients;
 
@@ -14,8 +13,7 @@ public class NewModel : PageModel
 
     public NewModel(AppDbContext db, IValidator<Patient> validator)
     {
-        _db = db;
-        _validator = validator;
+        _db = db; _validator = validator;
     }
 
     [BindProperty] public string FullName { get; set; } = "";
@@ -25,53 +23,18 @@ public class NewModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        // Crear objeto paciente con los datos del formulario
-        var patient = new Patient
-        {
-            FullName = FullName?.Trim(),
-            Email = Email?.Trim()
-        };
+        var entity = new Patient { FullName = FullName?.Trim() ?? "", Email = Email?.Trim() ?? "" };
 
-        // Validar con FluentValidation
-        ValidationResult result = await _validator.ValidateAsync(patient);
+        var result = await _validator.ValidateAsync(entity);
         if (!result.IsValid)
         {
-            foreach (var error in result.Errors)
-                ModelState.AddModelError(string.Empty, error.ErrorMessage);
+            foreach (var e in result.Errors)
+                ModelState.AddModelError(string.Empty, e.ErrorMessage);
             return Page();
         }
 
-        try
-        {
-            // Guardar en DB
-            _db.Patients.Add(patient);
-            await _db.SaveChangesAsync();
-
-            // Registrar auditoría
-            _db.AuditLogs.Add(new AuditLog
-            {
-                Action = "Patient.Created",
-                Level = "Info",
-                Data = $"Nuevo paciente: {patient.FullName} ({patient.Email})"
-            });
-            await _db.SaveChangesAsync();
-
-            TempData["Message"] = $"Paciente {patient.FullName} registrado correctamente.";
-            return RedirectToPage("Index");
-        }
-        catch (Exception ex)
-        {
-            // Registrar error
-            _db.AuditLogs.Add(new AuditLog
-            {
-                Action = "Patient.Error",
-                Level = "Error",
-                Data = ex.Message
-            });
-            await _db.SaveChangesAsync();
-
-            ModelState.AddModelError(string.Empty, "Ocurrió un error al guardar el paciente.");
-            return Page();
-        }
+        _db.Patients.Add(entity);
+        await _db.SaveChangesAsync();
+        return RedirectToPage("Index");
     }
 }

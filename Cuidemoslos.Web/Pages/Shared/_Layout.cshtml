@@ -11,14 +11,15 @@
     <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body class="bg">
-    <header class="topbar">
-        <div class="brand">Cuidémoslos</div>
-        <nav>
-            <a asp-page="/Patients/Index">Pacientes</a>
-            <a asp-page="/Notifications/Index">Notificaciones</a>
-            <a asp-page="/Logs/Index">Bitácora</a>
-            <a asp-page="/Outbox/Index">Outbox</a>
-
+    <header class="container">
+        <nav class="flex items-center justify-between py-3">
+            <a asp-page="/Index" class="text-xl font-semibold">Cuidemoslos</a>
+            <ul class="flex gap-4">
+                <li><a asp-page="/Patients/Index">Pacientes</a></li>
+                <li><a asp-page="/Notifications/Index">Notificaciones</a></li>
+                <li><a asp-page="/Logs/Index">Bitácora</a></li>
+                <li><a asp-page="/Auth/Logout">Salir</a></li>
+            </ul>
         </nav>
     </header>
     <main class="wrap">
