@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cuidemoslos.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14af9ce593a31991ffa8d1dee49ac7091f50631f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c4a1ab7aee60f1b0f966cd2c295c5f2c7909c8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cuidemoslos.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cuidemoslos.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

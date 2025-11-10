@@ -22,5 +22,15 @@
     "C:\\Users\\Gian\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.4\\npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\system.diagnostics.diagnosticsource\\9.0.1\\system.diagnostics.diagnosticsource.9.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json.",
+      "projectPath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.BLL\\Cuidemoslos.BLL.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.BLL\\Cuidemoslos.BLL.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

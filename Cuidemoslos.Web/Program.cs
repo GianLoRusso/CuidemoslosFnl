@@ -1,31 +1,46 @@
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Serilog;
 using Cuidemoslos.DAL.Persistence;
 using Cuidemoslos.Domain.Entities;
 using Cuidemoslos.Domain.Validation;
 using Cuidemoslos.Services.DependencyInjection;
 using Cuidemoslos.Services.Email;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+// ---------- CONFIGURAR SERILOG ----------
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/app-.log", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
-// --- Razor Pages (login anónimo) ---
+var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog();
+
+// ---------- Razor Pages (permitir /Auth sin login) ----------
 builder.Services.AddRazorPages(o =>
 {
     o.Conventions.AllowAnonymousToFolder("/Auth");
 });
 
-// --- Validadores (FluentValidation) ---
+// ---------- Validadores (FluentValidation) ----------
 builder.Services.AddValidatorsFromAssemblyContaining<PatientValidator>();
 
-// --- EF Core / PostgreSQL ---
+// ---------- EF Core / PostgreSQL ----------
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
-// --- Servicios propios (correo, etc.) ---
+// ---------- Servicios propios ----------
 builder.Services.AddCuidemoslosServices();
 
-// --- Swagger ---
+// ---------- Swagger ----------
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -37,15 +52,20 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// --- Healthchecks ---
+// ---------- Healthchecks ----------
 builder.Services.AddHealthChecks();
 
-// --- Auth por cookies (toda la web protegida excepto /Auth/*) ---
+// ---------- Auth por cookies (toda la web protegida excepto /Auth/*) ----------
 builder.Services.AddAuthentication("cookie")
     .AddCookie("cookie", o =>
     {
         o.LoginPath = "/Auth/Login";
         o.AccessDeniedPath = "/Auth/Login";
+        // cookies seguras detrás de proxy
+        o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        o.Cookie.SameSite = SameSiteMode.Lax;
+        o.SlidingExpiration = true;
+        o.ExpireTimeSpan = TimeSpan.FromHours(8);
     });
 
 builder.Services.AddAuthorization(options =>
@@ -56,20 +76,64 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-// --- Archivos estáticos (css/js/img) ---
+// ---------- Proxy headers (Render) ----------
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
+// ---------- Archivos estáticos ----------
 app.UseStaticFiles();
 
-// --- Auth/Authorization ---
+// ---------- Middleware de Excepciones + Serilog + Bitácora ----------
+app.Use(async (ctx, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "Unhandled exception");
+
+        using var scope = ctx.RequestServices.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        db.AuditLogs.Add(new AuditLog
+        {
+            Category = "Exception",
+            Action = "Unhandled",
+            Level = "Error",
+            Data = ex.ToString(),
+            UserName = ctx.User.Identity?.Name
+        });
+        await db.SaveChangesAsync();
+
+        ctx.Response.StatusCode = 500;
+        await ctx.Response.WriteAsync("Error interno del servidor");
+    }
+});
+
+// ---------- Swagger (público) ----------
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cuidemoslos API v1");
+    c.RoutePrefix = "swagger";
+});
+app.MapSwagger().AllowAnonymous();
+
+// ---------- Auth/Authorization ----------
 app.UseAuthentication();
 app.UseAuthorization();
 
-// --- API Key middleware para /api/* ---
+// ---------- Middleware de API Key para /api/* ----------
 app.Use(async (ctx, next) =>
 {
     if (ctx.Request.Path.StartsWithSegments("/api"))
     {
         var provided = ctx.Request.Headers["X-Api-Key"].FirstOrDefault();
-        var expected = app.Configuration["API_KEY"]; // defínelo en Render
+        var expected = app.Configuration["API_KEY"]; // definir en Render
 
         if (string.IsNullOrEmpty(expected) || provided != expected)
         {
@@ -81,26 +145,35 @@ app.Use(async (ctx, next) =>
     await next();
 });
 
-// --- Swagger (público) ---
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cuidemoslos API v1");
-    c.RoutePrefix = "swagger";
-});
-app.MapSwagger().AllowAnonymous();
-
-// --- Healthcheck (público) ---
+// ---------- Healthcheck (público) ----------
 app.MapHealthChecks("/health").AllowAnonymous();
 
-// --- Migración DB al iniciar ---
+// ---------- Migración DB al iniciar ----------
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
 }
 
-// --- Endpoint API (app paciente) ---
+// ---------- Logout ----------
+app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
+{
+    using var scope = ctx.RequestServices.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.AuditLogs.Add(new AuditLog
+    {
+        Category = "System",
+        Action = "User.Logout",
+        Level = "Info",
+        UserName = ctx.User.Identity?.Name
+    });
+    await db.SaveChangesAsync();
+
+    await ctx.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+    return Results.Redirect("/Auth/Login");
+}).AllowAnonymous();
+
+// ---------- Endpoint API (app paciente) ----------
 app.MapPost("/api/mood", async (
     AppDbContext db,
     IEmailSender email,
@@ -113,6 +186,7 @@ app.MapPost("/api/mood", async (
     db.MoodEntries.Add(entry);
     db.AuditLogs.Add(new AuditLog
     {
+        Category = "Business",
         Action = "MoodEntry.Created",
         Level = "Info",
         Data = $"PatientId={patientId};Score={score}"
@@ -136,6 +210,7 @@ app.MapPost("/api/mood", async (
 
             db.AuditLogs.Add(new AuditLog
             {
+                Category = "Business",
                 Action = "Email.Sent",
                 Level = "Info",
                 Data = $"To={proEmail}"
@@ -149,16 +224,51 @@ app.MapPost("/api/mood", async (
     {
         db.AuditLogs.Add(new AuditLog
         {
+            Category = "Exception",
             Action = "Email.Error",
             Level = "Error",
             Data = ex.Message
         });
         await db.SaveChangesAsync();
+        Log.Error(ex, "Error al enviar notificación");
         return Results.Problem("No se pudo enviar notificación.");
     }
+}).AllowAnonymous(); // se protege por API Key, no por cookie
+
+// ---------- REST Adicionales para Swagger ----------
+app.MapPost("/api/auth/login", (string email, string password) =>
+{
+    if (email == "admin@cuidemoslos.local" && password == "Admin123!")
+        return Results.Ok(new { token = "demo-token", email });
+    return Results.Unauthorized();
 });
 
-// --- Razor Pages ---
+app.MapGet("/api/patients/{id}/mood", async (AppDbContext db, int id) =>
+{
+    var moods = await db.MoodEntries
+        .Where(m => m.PatientId == id)
+        .OrderByDescending(m => m.CreatedAt)
+        .Take(30)
+        .ToListAsync();
+    return Results.Ok(moods);
+});
+
+app.MapGet("/api/professionals/{id}/dashboard", async (AppDbContext db, int id) =>
+{
+    var totalPatients = await db.Patients.CountAsync();
+    var alerts = await db.Notifications.CountAsync();
+    return Results.Ok(new { totalPatients, alerts });
+});
+
+app.MapGet("/api/reports/export", async (AppDbContext db, DateTime from, DateTime to) =>
+{
+    var logs = await db.AuditLogs
+        .Where(a => a.CreatedAt >= from && a.CreatedAt <= to)
+        .ToListAsync();
+    return Results.Ok(logs);
+});
+
+// ---------- Razor Pages ----------
 app.MapRazorPages();
 
 app.Run();

@@ -1,0 +1,13 @@
+﻿@page
+@{
+    ViewData["Title"] = "Panel de Administración";
+}
+<section class="card">
+    <h2>Panel de administración</h2>
+    <ul>
+        <li><a asp-page="/Logs/Index">Bitácora general</a></li>
+        <li><a asp-page="/Notifications/Index">Notificaciones</a></li>
+        <li><a href="/health" target="_blank">Health Check</a></li>
+        <li><a href="/swagger" target="_blank">Swagger API Docs</a></li>
+    </ul>
+</section>

@@ -28,6 +28,7 @@ C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
@@ -47,6 +48,15 @@ C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Npgsql.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Serilog.Sinks.File.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Gian\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\Desktop\Cuidemoslos\Cuidemoslos.Web\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
