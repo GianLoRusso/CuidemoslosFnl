@@ -413,6 +413,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "Auth0.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.0, )"

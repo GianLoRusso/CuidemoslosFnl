@@ -10,10 +10,10 @@ using Cuidemoslos.Services.Email;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Auth0.AspNetCore.Authentication;
 
 // ---------- CONFIGURAR SERILOG ----------
 Log.Logger = new LoggerConfiguration()
@@ -55,17 +55,26 @@ builder.Services.AddSwaggerGen(c =>
 // ---------- Healthchecks ----------
 builder.Services.AddHealthChecks();
 
-// ---------- Auth por cookies (toda la web protegida excepto /Auth/*) ----------
-builder.Services.AddAuthentication("cookie")
-    .AddCookie("cookie", o =>
+// ---------- AUTH0 ----------
+builder.Services
+    .AddAuthentication(options =>
     {
-        o.LoginPath = "/Auth/Login";
-        o.AccessDeniedPath = "/Auth/Login";
-        // cookies seguras detrás de proxy
-        o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-        o.Cookie.SameSite = SameSiteMode.Lax;
-        o.SlidingExpiration = true;
-        o.ExpireTimeSpan = TimeSpan.FromHours(8);
+        options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = Auth0Constants.AuthenticationScheme;
+    })
+    .AddCookie(options =>
+    {
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.SameSite = SameSiteMode.Lax;
+        options.SlidingExpiration = true;
+        options.ExpireTimeSpan = TimeSpan.FromHours(8);
+    })
+    .AddAuth0WebAppAuthentication(options =>
+    {
+        options.Domain = builder.Configuration["Auth0:Domain"];
+        options.ClientId = builder.Configuration["Auth0:ClientId"];
+        options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
     });
 
 builder.Services.AddAuthorization(options =>
@@ -133,7 +142,7 @@ app.Use(async (ctx, next) =>
     if (ctx.Request.Path.StartsWithSegments("/api"))
     {
         var provided = ctx.Request.Headers["X-Api-Key"].FirstOrDefault();
-        var expected = app.Configuration["API_KEY"]; // definir en Render
+        var expected = app.Configuration["API_KEY"];
 
         if (string.IsNullOrEmpty(expected) || provided != expected)
         {
@@ -155,25 +164,29 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 }
 
-// ---------- Logout ----------
-app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
-{
-    using var scope = ctx.RequestServices.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.AuditLogs.Add(new AuditLog
-    {
-        Category = "System",
-        Action = "User.Logout",
-        Level = "Info",
-        UserName = ctx.User.Identity?.Name
-    });
-    await db.SaveChangesAsync();
+// ---------- LOGIN / LOGOUT CON AUTH0 ----------
 
-    await ctx.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-    return Results.Redirect("/Auth/Login");
+// Redirige al login de Auth0
+app.MapGet("/Auth/Login", async (HttpContext ctx) =>
+{
+    var returnUrl = ctx.Request.Query["ReturnUrl"].FirstOrDefault() ?? "/";
+    var props = new LoginAuthenticationPropertiesBuilder()
+        .WithRedirectUri(returnUrl)
+        .Build();
+    await ctx.ChallengeAsync(Auth0Constants.AuthenticationScheme, props);
 }).AllowAnonymous();
 
-// ---------- Endpoint API (app paciente) ----------
+// Logout (Auth0 + cookie local)
+app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
+{
+    var returnUrl = "/";
+    await ctx.SignOutAsync(Auth0Constants.AuthenticationScheme,
+        new AuthenticationProperties { RedirectUri = returnUrl });
+    await ctx.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+    return Results.Redirect(returnUrl);
+}).AllowAnonymous();
+
+// ---------- API: Estado de ánimo ----------
 app.MapPost("/api/mood", async (
     AppDbContext db,
     IEmailSender email,
@@ -233,9 +246,9 @@ app.MapPost("/api/mood", async (
         Log.Error(ex, "Error al enviar notificación");
         return Results.Problem("No se pudo enviar notificación.");
     }
-}).AllowAnonymous(); // se protege por API Key, no por cookie
+}).AllowAnonymous();
 
-// ---------- REST Adicionales para Swagger ----------
+// ---------- REST Adicionales ----------
 app.MapPost("/api/auth/login", (string email, string password) =>
 {
     if (email == "admin@cuidemoslos.local" && password == "Admin123!")
