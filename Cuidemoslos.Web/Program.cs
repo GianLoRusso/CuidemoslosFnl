@@ -163,13 +163,25 @@ using (var scope = app.Services.CreateScope())
 
 // ====== LOGIN / LOGOUT con Auth0 ======
 
-// Redirige al login de Auth0
+// Login
 app.MapGet("/Auth/Login", async (HttpContext ctx) =>
 {
-    var returnUrl = ctx.Request.Query["ReturnUrl"].FirstOrDefault() ?? "/";
+    // 1) Tomar ReturnUrl si viene
+    var returnUrl = ctx.Request.Query["ReturnUrl"].FirstOrDefault();
+
+    // 2) Saneamos: solo aceptamos URLs locales, no vacías, y que NO apunten al propio Login ni al callback
+    bool isLocal = !string.IsNullOrEmpty(returnUrl) &&
+                   returnUrl.StartsWith("/") &&
+                   !returnUrl.StartsWith("/Auth/Login", StringComparison.OrdinalIgnoreCase) &&
+                   !returnUrl.StartsWith("/signin-auth0", StringComparison.OrdinalIgnoreCase) && // o "/callback" si usás ese
+                   !returnUrl.StartsWith("/Auth/Logout", StringComparison.OrdinalIgnoreCase);
+
+    if (!isLocal) returnUrl = "/";
+
     var props = new LoginAuthenticationPropertiesBuilder()
         .WithRedirectUri(returnUrl)
         .Build();
+
     await ctx.ChallengeAsync(Auth0Constants.AuthenticationScheme, props);
     return Results.Empty;
 }).AllowAnonymous();
