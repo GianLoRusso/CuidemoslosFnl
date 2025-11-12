@@ -54,14 +54,13 @@ builder.Services.AddSwaggerGen(c =>
 // Healthchecks
 builder.Services.AddHealthChecks();
 
-// ====== AUTH0 (NO registrar AddCookie manual) ======
+// ====== AUTH0 con callback explícito /callback ======
 builder.Services.AddAuth0WebAppAuthentication(options =>
 {
     options.Domain = builder.Configuration["Auth0:Domain"];
     options.ClientId = builder.Configuration["Auth0:ClientId"];
     options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
-    // Si usás el callback por defecto de la librería NO pongas CallbackPath.
-    // Si preferís /callback, agregá: options.CallbackPath = "/callback";
+    options.CallbackPath = "/callback"; // Opción A
 });
 
 // (opcional) Configurar opciones del cookie SIN volver a registrarlo
@@ -166,15 +165,14 @@ using (var scope = app.Services.CreateScope())
 // Login
 app.MapGet("/Auth/Login", async (HttpContext ctx) =>
 {
-    // 1) Tomar ReturnUrl si viene
     var returnUrl = ctx.Request.Query["ReturnUrl"].FirstOrDefault();
 
-    // 2) Saneamos: solo aceptamos URLs locales, no vacías, y que NO apunten al propio Login ni al callback
+    // Aceptamos solo URLs locales válidas y que NO apunten a login/logout/callback
     bool isLocal = !string.IsNullOrEmpty(returnUrl) &&
                    returnUrl.StartsWith("/") &&
                    !returnUrl.StartsWith("/Auth/Login", StringComparison.OrdinalIgnoreCase) &&
-                   !returnUrl.StartsWith("/signin-auth0", StringComparison.OrdinalIgnoreCase) && // o "/callback" si usás ese
-                   !returnUrl.StartsWith("/Auth/Logout", StringComparison.OrdinalIgnoreCase);
+                   !returnUrl.StartsWith("/Auth/Logout", StringComparison.OrdinalIgnoreCase) &&
+                   !returnUrl.StartsWith("/callback", StringComparison.OrdinalIgnoreCase); // Opción A
 
     if (!isLocal) returnUrl = "/";
 
@@ -185,7 +183,6 @@ app.MapGet("/Auth/Login", async (HttpContext ctx) =>
     await ctx.ChallengeAsync(Auth0Constants.AuthenticationScheme, props);
     return Results.Empty;
 }).AllowAnonymous();
-
 
 // Logout: primero cookie local, luego Auth0 (con RedirectUri)
 app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
