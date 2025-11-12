@@ -15,7 +15,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Auth0.AspNetCore.Authentication;
 
-// ---------- CONFIGURAR SERILOG ----------
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("logs/app-.log", rollingInterval: RollingInterval.Day)
@@ -24,23 +23,23 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog();
 
-// ---------- Razor Pages (permitir /Auth sin login) ----------
+// Razor Pages (permitir /Auth sin login)
 builder.Services.AddRazorPages(o =>
 {
     o.Conventions.AllowAnonymousToFolder("/Auth");
 });
 
-// ---------- Validadores (FluentValidation) ----------
+// Validadores
 builder.Services.AddValidatorsFromAssemblyContaining<PatientValidator>();
 
-// ---------- EF Core / PostgreSQL ----------
+// EF Core / PostgreSQL
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 
-// ---------- Servicios propios ----------
+// Servicios propios
 builder.Services.AddCuidemoslosServices();
 
-// ---------- Swagger ----------
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -52,16 +51,16 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// ---------- Healthchecks ----------
+// Healthchecks
 builder.Services.AddHealthChecks();
 
-// ---------- AUTH0 ----------
+// ====== AUTH0 + COOKIES (único bloque de autenticación) ======
 builder.Services
     .AddAuthentication(options =>
     {
-        options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme; // "Cookies"
         options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = Auth0Constants.AuthenticationScheme;
+        options.DefaultChallengeScheme = Auth0Constants.AuthenticationScheme;               // "Auth0"
     })
     .AddCookie(options =>
     {
@@ -72,29 +71,33 @@ builder.Services
     })
     .AddAuth0WebAppAuthentication(options =>
     {
+        // OJO: ahora leemos "Auth0:..." (no "Auth")
         options.Domain = builder.Configuration["Auth0:Domain"];
         options.ClientId = builder.Configuration["Auth0:ClientId"];
         options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
+
+        // Si en Auth0 configuraste /callback, descomenta:
+        // options.CallbackPath = "/callback";
+        // Si NO lo seteás, el callback por defecto es /signin-auth0 (recomendado).
     });
 
 builder.Services.AddAuthorization(options =>
 {
-    // Exigir login por defecto en todo
-    options.FallbackPolicy = options.DefaultPolicy;
+    options.FallbackPolicy = options.DefaultPolicy; // exige login por defecto
 });
 
 var app = builder.Build();
 
-// ---------- Proxy headers (Render) ----------
+// Proxy headers (Render)
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
-// ---------- Archivos estáticos ----------
+// Archivos estáticos
 app.UseStaticFiles();
 
-// ---------- Middleware de Excepciones + Serilog + Bitácora ----------
+// Middleware de excepciones + bitácora
 app.Use(async (ctx, next) =>
 {
     try
@@ -123,7 +126,7 @@ app.Use(async (ctx, next) =>
     }
 });
 
-// ---------- Swagger (público) ----------
+// Swagger (público)
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
@@ -132,11 +135,11 @@ app.UseSwaggerUI(c =>
 });
 app.MapSwagger().AllowAnonymous();
 
-// ---------- Auth/Authorization ----------
+// Auth
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ---------- Middleware de API Key para /api/* ----------
+// API Key para /api/*
 app.Use(async (ctx, next) =>
 {
     if (ctx.Request.Path.StartsWithSegments("/api"))
@@ -154,17 +157,17 @@ app.Use(async (ctx, next) =>
     await next();
 });
 
-// ---------- Healthcheck (público) ----------
+// Healthcheck (público)
 app.MapHealthChecks("/health").AllowAnonymous();
 
-// ---------- Migración DB al iniciar ----------
+// Migración DB al iniciar
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
 }
 
-// ---------- LOGIN / LOGOUT CON AUTH0 ----------
+// ====== LOGIN / LOGOUT con Auth0 ======
 
 // Redirige al login de Auth0
 app.MapGet("/Auth/Login", async (HttpContext ctx) =>
@@ -174,19 +177,24 @@ app.MapGet("/Auth/Login", async (HttpContext ctx) =>
         .WithRedirectUri(returnUrl)
         .Build();
     await ctx.ChallengeAsync(Auth0Constants.AuthenticationScheme, props);
+    return Results.Empty;
 }).AllowAnonymous();
 
-// Logout (Auth0 + cookie local)
+// Logout: primero cookie, luego Auth0 con RedirectUri
 app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
 {
     var returnUrl = "/";
-    await ctx.SignOutAsync(Auth0Constants.AuthenticationScheme,
-        new AuthenticationProperties { RedirectUri = returnUrl });
     await ctx.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-    return Results.Redirect(returnUrl);
+
+    await ctx.SignOutAsync(Auth0Constants.AuthenticationScheme, new AuthenticationProperties
+    {
+        RedirectUri = returnUrl
+    });
+
+    return Results.Empty;
 }).AllowAnonymous();
 
-// ---------- API: Estado de ánimo ----------
+// ====== API: Estado de ánimo ======
 app.MapPost("/api/mood", async (
     AppDbContext db,
     IEmailSender email,
@@ -248,7 +256,7 @@ app.MapPost("/api/mood", async (
     }
 }).AllowAnonymous();
 
-// ---------- REST Adicionales ----------
+// REST adicionales de demo
 app.MapPost("/api/auth/login", (string email, string password) =>
 {
     if (email == "admin@cuidemoslos.local" && password == "Admin123!")
@@ -281,7 +289,7 @@ app.MapGet("/api/reports/export", async (AppDbContext db, DateTime from, DateTim
     return Results.Ok(logs);
 });
 
-// ---------- Razor Pages ----------
+// Razor Pages
 app.MapRazorPages();
 
 app.Run();
