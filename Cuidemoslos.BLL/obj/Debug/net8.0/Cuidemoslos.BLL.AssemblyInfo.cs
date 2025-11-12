@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cuidemoslos.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8e62352e1c1dc093e17abe817a25b21ae74f0b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bcdefad2536b478aed8d720cc8eb4ae41e31328")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cuidemoslos.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cuidemoslos.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
