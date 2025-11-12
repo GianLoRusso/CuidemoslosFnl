@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GbuyS3Q9iH0=",
+  "dgSpecHash": "i7WvIGyDinU=",
   "success": true,
   "projectFilePath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\Cuidemoslos.Services.csproj",
   "expectedPackageFiles": [
@@ -30,15 +30,5 @@
     "C:\\Users\\Gian\\.nuget\\packages\\system.formats.asn1\\8.0.1\\system.formats.asn1.8.0.1.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\system.security.cryptography.pkcs\\8.0.1\\system.security.cryptography.pkcs.8.0.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\Cuidemoslos.Services.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Services\\Cuidemoslos.Services.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

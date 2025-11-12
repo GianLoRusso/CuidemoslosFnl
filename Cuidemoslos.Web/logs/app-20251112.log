@@ -1,0 +1,28 @@
+2025-11-12 10:43:47.179 -03:00 [ERR] An error occurred using the connection to database 'cuidemoslos_db' on server 'tcp://HOST:5432'.
+2025-11-12 11:09:37.710 -03:00 [INF] Executed DbCommand (189ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-11-12 11:09:39.749 -03:00 [INF] Executed DbCommand (181ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2025-11-12 11:09:39.759 -03:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-11-12 11:09:39.933 -03:00 [INF] Executed DbCommand (172ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2025-11-12 11:09:40.107 -03:00 [INF] Executed DbCommand (168ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-11-12 11:09:40.121 -03:00 [INF] Applying migration '20251112134152_SyncModel'.
+2025-11-12 11:09:40.333 -03:00 [INF] Executed DbCommand (200ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "AuditLogs" ALTER COLUMN "Data" DROP NOT NULL;
+2025-11-12 11:09:40.538 -03:00 [INF] Executed DbCommand (202ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "AuditLogs" ADD "Category" text NOT NULL DEFAULT '';
+2025-11-12 11:09:40.711 -03:00 [INF] Executed DbCommand (168ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE "AuditLogs" ADD "UserName" text;
+2025-11-12 11:09:40.947 -03:00 [INF] Executed DbCommand (231ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20251112134152_SyncModel', '9.0.10');

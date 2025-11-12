@@ -3,7 +3,8 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
+	  <UserSecretsId>6ed02a90-a026-4e8a-ad1c-122c2a1369fd</UserSecretsId>
+  </PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Cuidemoslos.Domain\Cuidemoslos.Domain.csproj" />
 		<ProjectReference Include="..\Cuidemoslos.BLL\Cuidemoslos.BLL.csproj" />
@@ -23,6 +24,10 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
 	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
 	  <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />

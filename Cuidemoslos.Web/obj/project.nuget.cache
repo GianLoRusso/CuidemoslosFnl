@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VUkINHd4HZI=",
+  "dgSpecHash": "94j44Cx8lLs=",
   "success": true,
   "projectFilePath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Cuidemoslos.Web.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,7 @@
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.10\\microsoft.entityframeworkcore.analyzers.9.0.10.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.10\\microsoft.entityframeworkcore.design.9.0.10.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.10\\microsoft.entityframeworkcore.relational.9.0.10.nupkg.sha512",
+    "C:\\Users\\Gian\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.0\\microsoft.entityframeworkcore.tools.9.0.0.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.extensions.apidescription.server\\8.0.0\\microsoft.extensions.apidescription.server.8.0.0.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.10\\microsoft.extensions.caching.abstractions.9.0.10.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.10\\microsoft.extensions.caching.memory.9.0.10.nupkg.sha512",
@@ -102,15 +103,5 @@
     "C:\\Users\\Gian\\.nuget\\packages\\system.text.json\\9.0.10\\system.text.json.9.0.10.nupkg.sha512",
     "C:\\Users\\Gian\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error al obtener los datos de vulnerabilidad del paquete: No se puede cargar el índice de servicio del origen https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Cuidemoslos.Web.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Gian\\OneDrive - UNIVERSIDAD ABIERTA INTERAMERICANA\\Desktop\\Cuidemoslos\\Cuidemoslos.Web\\Cuidemoslos.Web.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }
