@@ -1,17 +1,20 @@
 ﻿@page
-@model Cuidemoslos.Web.Pages.IndexModel
+@model IndexModel
 @{
-    ViewData["Title"] = "Panel";
+    ViewData["Title"] = "Inicio";
 }
-<section class="card">
-    <h2>Panel</h2>
-    <div class="list">
-        <div>Pacientes: <strong>@Model.PatientsCount</strong></div>
-        <div>Alertas hoy: <strong class="kpi warn">@Model.AlertsToday</strong></div>
-    </div>
-    <p>
-        <a class="link" asp-page="/Patients/Index">Ir a Pacientes</a> ·
-        <a class="link" asp-page="/Notifications/Index">Notificaciones</a> ·
-        <a class="link" asp-page="/Logs/Index">Bitácora</a>
-    </p>
-</section>
+
+<div class="container">
+    <h2>Bienvenido/a</h2>
+    <p>Usuario: <strong>@Model.UserName</strong></p>
+
+    <div class="muted">Claims:</div>
+    <ul>
+        @foreach (var c in User.Claims.Take(10))
+        {
+            <li>@c.Type = @c.Value</li>
+        }
+    </ul>
+
+    <p><a class="btn primary" href="/Auth/Logout">Salir</a></p>
+</div>
