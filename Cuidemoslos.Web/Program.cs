@@ -54,31 +54,25 @@ builder.Services.AddSwaggerGen(c =>
 // Healthchecks
 builder.Services.AddHealthChecks();
 
-// ====== AUTH0 + COOKIES (único bloque de autenticación) ======
-builder.Services
-    .AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme; // "Cookies"
-        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = Auth0Constants.AuthenticationScheme;               // "Auth0"
-    })
-    .AddCookie(options =>
+// ====== AUTH0 (NO registrar AddCookie manual) ======
+builder.Services.AddAuth0WebAppAuthentication(options =>
+{
+    options.Domain = builder.Configuration["Auth0:Domain"];
+    options.ClientId = builder.Configuration["Auth0:ClientId"];
+    options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
+    // Si usás el callback por defecto de la librería NO pongas CallbackPath.
+    // Si preferís /callback, agregá: options.CallbackPath = "/callback";
+});
+
+// (opcional) Configurar opciones del cookie SIN volver a registrarlo
+builder.Services.Configure<CookieAuthenticationOptions>(
+    CookieAuthenticationDefaults.AuthenticationScheme,
+    options =>
     {
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
         options.Cookie.SameSite = SameSiteMode.Lax;
         options.SlidingExpiration = true;
         options.ExpireTimeSpan = TimeSpan.FromHours(8);
-    })
-    .AddAuth0WebAppAuthentication(options =>
-    {
-        // OJO: ahora leemos "Auth0:..." (no "Auth")
-        options.Domain = builder.Configuration["Auth0:Domain"];
-        options.ClientId = builder.Configuration["Auth0:ClientId"];
-        options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
-
-        // Si en Auth0 configuraste /callback, descomenta:
-        // options.CallbackPath = "/callback";
-        // Si NO lo seteás, el callback por defecto es /signin-auth0 (recomendado).
     });
 
 builder.Services.AddAuthorization(options =>
@@ -180,10 +174,12 @@ app.MapGet("/Auth/Login", async (HttpContext ctx) =>
     return Results.Empty;
 }).AllowAnonymous();
 
-// Logout: primero cookie, luego Auth0 con RedirectUri
+
+// Logout: primero cookie local, luego Auth0 (con RedirectUri)
 app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
 {
     var returnUrl = "/";
+
     await ctx.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
     await ctx.SignOutAsync(Auth0Constants.AuthenticationScheme, new AuthenticationProperties
