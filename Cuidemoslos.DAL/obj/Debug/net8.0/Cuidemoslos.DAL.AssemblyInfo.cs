@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cuidemoslos.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bcdefad2536b478aed8d720cc8eb4ae41e31328")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d49fa5bcf75af3a7b5703563800e71c47119f94")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cuidemoslos.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cuidemoslos.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

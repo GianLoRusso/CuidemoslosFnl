@@ -3,52 +3,48 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
+using Microsoft.Extensions.Configuration;
 
-namespace Cuidemoslos.Web.Pages.Auth;
-
-[IgnoreAntiforgeryToken] // ← TEMPORAL para evitar 400
-public class LoginModel : PageModel
+namespace Cuidemoslos.Web.Pages.Auth
 {
-    [BindProperty] public string Email { get; set; } = "";
-    [BindProperty] public string Password { get; set; } = "";
-    public string? ReturnUrl { get; set; }
-    public string? ErrorMessage { get; set; }
-
-    public void OnGet(string? returnUrl = null) => ReturnUrl = returnUrl ?? "/";
-
-    public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+    public class LoginModel : PageModel
     {
-        ReturnUrl = returnUrl ?? "/";
+        private readonly IConfiguration _config;
 
-        // TODO: reemplazar por tu validación real
-        var ok = Email.Equals("admin@cuidemoslos.local", StringComparison.OrdinalIgnoreCase)
-                 && Password == "Admin123!";
-
-        if (!ok)
+        public LoginModel(IConfiguration config)
         {
-            // Registrar login en bitácora de sistema
-            using (var scope = HttpContext.RequestServices.CreateScope())
-            {
-                var db = scope.ServiceProvider.GetRequiredService<Cuidemoslos.DAL.Persistence.AppDbContext>();
-                db.AuditLogs.Add(new Cuidemoslos.Domain.Entities.AuditLog
-                {
-                    Category = "System",
-                    Action = "User.Login",
-                    Level = "Info",
-                    UserName = Email
-                });
-                await db.SaveChangesAsync();
-            }
-            ModelState.AddModelError(string.Empty, "Credenciales inválidas");
-            return Page();
+            _config = config;
         }
 
-        var claims = new[] { new Claim(ClaimTypes.Name, "Admin") };
-        var id = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        await HttpContext.SignInAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme,
-            new ClaimsPrincipal(id));
+        [BindProperty] public string Email { get; set; } = "";
+        [BindProperty] public string Password { get; set; } = "";
+        [TempData] public string? ErrorMessage { get; set; }
 
-        return LocalRedirect(Url.IsLocalUrl(ReturnUrl) ? ReturnUrl : "/");
+        public void OnGet() { }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var validUser = _config["Auth:User"];
+            var validPass = _config["Auth:Password"];
+
+            if (Email == validUser && Password == validPass)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, Email),
+                    new Claim(ClaimTypes.Role, "Admin")
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                return RedirectToPage("/Index");
+            }
+
+            ErrorMessage = "Usuario o contraseña incorrectos.";
+            return Page();
+        }
     }
 }
