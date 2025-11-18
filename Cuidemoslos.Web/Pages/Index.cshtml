@@ -1,20 +1,416 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Panel profesional";
+    var userName = Model.UserName ?? "Profesional";
 }
 
-<div class="container">
-    <h2>Bienvenido/a</h2>
-    <p>Usuario: <strong>@Model.UserName</strong></p>
+<div class="dashboard">
+    <header class="dashboard__header">
+        <div>
+            <h1>Bienvenido a Cuidemoslos</h1>
+            <p class="dashboard__subtitle">
+                Hola, <span class="highlight">@userName</span> 👋&nbsp;
+                Este es tu panel para seguir a tus pacientes y sus estados de ánimo.
+            </p>
+        </div>
+    </header>
 
-    <div class="muted">Claims:</div>
-    <ul>
-        @foreach (var c in User.Claims.Take(10))
-        {
-            <li>@c.Type = @c.Value</li>
-        }
-    </ul>
+    <!-- Tarjetas de métricas rápidas (de momento son estáticas / demo) -->
+    <section class="dashboard__stats">
+        <div class="stat-card">
+            <p class="stat-card__label">Pacientes activos</p>
+            <<p class="stat-card__value">@Model.ActivePatients</p>
+            <p class="stat-card__hint">Con al menos un registro este mes</p>
+        </div>
+        <div class="stat-card">
+            <p class="stat-card__label">Alertas de hoy</p>
+            <p class="stat-card__value stat-card__value--danger">@Model.AlertsToday</p>
+            <p class="stat-card__hint">Estados ≤ 2 reportados en las últimas 24 hs</p>
+        </div>
+        <div class="stat-card">
+            <p class="stat-card__label">Registros de ánimo</p>
+            <p class="stat-card__value">@Model.MoodLastWeek</p>
+            <p class="stat-card__hint">Total de registros en la última semana</p>
+        </div>
+    </section>
 
-    <p><a class="btn primary" href="/Auth/Logout">Salir</a></p>
+    <section class="dashboard__content">
+        <!-- Panel izquierdo: últimos estados (por ahora mock) -->
+        <article class="panel">
+            <div class="panel__header">
+                <h2>Últimos estados de ánimo</h2>
+                <span class="panel__tag">Demo</span>
+            </div>
+            <form method="get" class="filter-bar">
+    <label for="patientId">Filtrar por paciente:</label>
+                <select id="patientId" name="patientId" onchange="this.form.submit()">
+                    <option value="">Todos</option>
+                    @foreach (var p in Model.Patients)
+                    {
+                        if (Model.SelectedPatientId == p.Id)
+                        {
+                            <option value="@p.Id" selected>@p.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@p.Id">@p.Name</option>
+                        }
+                    }
+                </select>
+
+</form>
+
+            <p class="panel__description">
+                En esta tabla ves los últimos registros de estado de ánimo reportados por tus pacientes
+                desde la app móvil. Te permite detectar rápidamente caídas de ánimo y priorizar seguimientos.
+            </p>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Paciente</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Notas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.LastMoods.Any())
+                        {
+                            @foreach (var mood in Model.LastMoods)
+                            {
+                                var badgeClass = mood.Score <= 2
+                                ? "badge badge--critical"
+                                : mood.Score == 3
+                                ? "badge badge--alert"
+                                : "badge badge--ok";
+
+                                var emoji = mood.Score switch
+                                {
+                                    1 => "😢",
+                                    2 => "😟",
+                                    3 => "😐",
+                                    4 => "🙂",
+                                    5 => "😄",
+                                    _ => "😐"
+                                };
+
+                                <tr>
+                                    <td>@mood.PatientName</td>
+                                    <td>
+                                        <span class="@badgeClass">
+                                            @mood.Score @emoji
+                                        </span>
+                                    </td>
+                                    <td>@mood.CreatedAt.ToLocalTime().ToString("dd/MM HH:mm")</td>
+                                    <td>@(string.IsNullOrWhiteSpace(mood.Notes) ? "-" : mood.Notes)</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" style="text-align:center; padding: 16px;">
+                                    Todavía no hay registros de ánimo. Probá enviar uno desde la app del paciente. 🙂
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </article>
+
+        <!-- Panel derecho: info del usuario y claims -->
+        <aside class="panel panel--side">
+            <div class="panel__header">
+                <h2>Tu cuenta</h2>
+            </div>
+
+            <p class="panel__description">
+                Estás autenticado a través de Auth0. Estos son algunos datos básicos de tu perfil:
+            </p>
+
+            <ul class="claims-list">
+                @foreach (var c in User.Claims.Take(3))
+                {
+                    <li>
+                        <span class="claims-list__label">@c.Type:</span>
+                        <span class="claims-list__value">@c.Value</span>
+                    </li>
+                }
+            </ul>
+
+            <form method="get" action="/Auth/Logout">
+                <button type="submit" class="btn-logout">Cerrar sesión</button>
+            </form>
+        </aside>
+    </section>
 </div>
+
+<style>
+    .dashboard {
+        max-width: 1160px;
+        margin: 32px auto;
+        padding: 0 16px 40px;
+    }
+
+    .dashboard__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 24px;
+    }
+
+        .dashboard__header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #111827; /* texto bien oscuro sobre el fondo blanco */
+        }
+
+    .dashboard__subtitle {
+        margin: 0;
+        color: #4b5563; /* gris más fuerte, mejor contraste */
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .highlight {
+        color: #111827; /* el mail también oscuro */
+        font-weight: 600;
+    }
+
+    .dashboard__stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, #111827, #020617);
+        border-radius: 16px;
+        padding: 16px 18px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .stat-card__label {
+        margin: 0;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #9ca3af;
+    }
+
+    .stat-card__value {
+        margin: 4px 0 2px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #e5e7eb;
+    }
+
+    .stat-card__value--danger {
+        color: #f97373;
+    }
+
+    .stat-card__hint {
+        margin: 0;
+        font-size: 12px;
+        color: #6b7280;
+    }
+
+    .dashboard__content {
+        display: grid;
+        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+        gap: 18px;
+    }
+
+    .panel {
+        background-color: #020617;
+        border-radius: 18px;
+        padding: 18px 18px 20px;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    .panel--side {
+        align-self: flex-start;
+    }
+
+    .panel__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+        .panel__header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+    .panel__tag {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background-color: rgba(148, 163, 184, 0.2);
+        color: #e5e7eb;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    .panel__description {
+        margin: 0 0 14px;
+        font-size: 13px;
+        color: #9ca3af;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+
+        .table th,
+        .table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(55, 65, 81, 0.8);
+            text-align: left;
+            color: #e5e7eb;
+        }
+
+        .table th {
+            font-weight: 600;
+            font-size: 12px;
+            color: #cbd5f5; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: rgba(15, 23, 42, 0.9); /* alternar filas, más oscuras */
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: rgba(15, 23, 42, 0.7);
+        }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .badge--ok {
+        background-color: rgba(34, 197, 94, 0.15);
+        color: #4ade80;
+    }
+
+    .badge--alert {
+        background-color: rgba(251, 146, 60, 0.15);
+        color: #fb923c;
+    }
+
+    .badge--critical {
+        background-color: rgba(248, 113, 113, 0.16);
+        color: #f87171;
+    }
+
+    .claims-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 16px;
+        font-size: 13px;
+    }
+
+        .claims-list li + li {
+            margin-top: 6px;
+        }
+
+    .claims-list__label {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #9ca3af;
+    }
+
+    .claims-list__value {
+        color: #e5e7eb;
+        word-break: break-all;
+    }
+
+    .btn-logout {
+        width: 100%;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        color: #f9fafb;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px 0;
+        cursor: pointer;
+        transition: transform 0.08s ease-out, box-shadow 0.08s ease-out;
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.45);
+    }
+
+        .btn-logout:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.6);
+        }
+
+        .btn-logout:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.45);
+        }
+
+    @@media (max-width: 900px) {
+        .dashboard__stats
+
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard__content {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        margin-top: 80px;
+    }
+
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+            .filter-bar label {
+                color: #e5e7eb;
+            }
+
+            .filter-bar select {
+                background-color: #020617;
+                color: #e5e7eb;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.7);
+                padding: 4px 10px;
+                font-size: 13px;
+                outline: none;
+            }
+    }
+</style>

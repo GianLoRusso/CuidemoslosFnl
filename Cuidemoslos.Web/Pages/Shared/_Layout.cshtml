@@ -1,34 +1,206 @@
-﻿@{
-    Layout = null;
-    var title = ViewData["Title"] as string ?? "Cuidémoslos";
+﻿@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Authentication
+@{
+    var isAuth = User?.Identity?.IsAuthenticated == true;
+    var userName = isAuth ? (User.Identity?.Name ?? "Usuario") : null;
+    Layout = null; // este ES el layout raíz
 }
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>@title</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Cuidemoslos</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</head>
-<body class="bg">
-    <header class="container">
-        <nav class="flex items-center justify-between py-3">
-            <a asp-page="/Index" class="text-xl font-semibold">Cuidemoslos</a>
-            <ul class="flex gap-4">
-                <li><a asp-page="/Patients/Index">Pacientes</a></li>
-                <li><a asp-page="/Notifications/Index">Notificaciones</a></li>
-                <li><a asp-page="/Logs/Index">Bitácora</a></li>
-                <li><a asp-page="/Auth/Logout">Salir</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="wrap">
-        @RenderBody()
-        <form method="post" asp-page="/Auth/Logout" style="display:inline">
-            <button class="link" style="background:none;border:0;cursor:pointer">Salir</button>
-        </form>
 
+    <style>
+        /* Navbar minimal, mobile-first */
+        .nav {
+            background: #0b1220;
+            border-bottom: 1px solid #1f2a44;
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .brand-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            display: inline-block;
+        }
+
+        .menu {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+            .menu a {
+                color: #cbd5e1;
+                text-decoration: none;
+                padding: 8px 10px;
+                border-radius: 8px;
+                font-size: 15px;
+            }
+
+                .menu a:hover {
+                    background: #12203a;
+                    color: #fff;
+                }
+
+        .user-chip {
+            color: #a5b4fc;
+            font-size: 14px;
+            padding: 6px 10px;
+            border: 1px solid #2a3657;
+            border-radius: 999px;
+        }
+
+        .btn-blue {
+            background: #2563eb;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+            .btn-blue:hover {
+                background: #1d4ed8;
+            }
+        /* mobile */
+        .burger {
+            display: none;
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 22px;
+        }
+
+        .menu-wrap {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        @@media (max-width: 768px) {
+            .burger
+
+        {
+            display: block;
+        }
+
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 0;
+        }
+
+            .menu.show {
+                display: flex;
+            }
+
+        .menu-wrap {
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        }
+
+        /* body wrapper */
+        .page {
+            min-height: 100vh;
+            background: #0e1420;
+            color: #e4e7ef;
+        }
+
+        .main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px 60px;
+        }
+
+        footer {
+            color: #8592ad;
+            border-top: 1px solid #1f2a44;
+            padding: 16px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function toggleMenu(){ document.getElementById('menu').classList.toggle('show'); }
+    </script>
+</head>
+<body class="page">
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="/">
+                <span class="brand-badge"></span> Cuidemoslos
+            </a>
+
+            <button class="burger" aria-label="menu" onclick="toggleMenu()">☰</button>
+
+            <div class="menu-wrap">
+                <nav id="menu" class="menu">
+                    @if (isAuth)
+                    {
+                        <a href="/Patients">Pacientes</a>
+                        <a href="/Notifications">Notificaciones</a>
+                        <a href="/Audit">Bitácora</a>
+                        <a href="/swagger" target="_blank">API</a>
+                    }
+                    else
+                    {
+                        <a href="/swagger" target="_blank">API</a>
+                    }
+                </nav>
+
+                <div class="menu" style="gap:10px;">
+                    @if (isAuth)
+                    {
+                        <span class="user-chip">@userName</span>
+                        <a class="btn-blue" href="/Auth/Logout">Salir</a>
+                    }
+                    else
+                    {
+                        <a class="btn-blue" href="/Auth/Login">Iniciar sesión</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main role="main" class="main">
+        @RenderBody()
     </main>
+
+    <footer>
+        © @DateTime.UtcNow.Year · Cuidemoslos · Ambiente: Producción
+    </footer>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

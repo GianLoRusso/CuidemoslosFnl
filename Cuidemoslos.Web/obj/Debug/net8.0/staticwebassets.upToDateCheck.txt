@@ -65,3 +65,6 @@ wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 wwwroot\outbox\20250909_202609_Alerta Cuidémoslos_ Estado crítico de Prueba.html
 wwwroot\outbox\20250909_225529_Alerta Cuidémoslos_ Estado crítico de Juan.html
 wwwroot\outbox\20250909_225826_Alerta Cuidémoslos_ Estado crítico de Juan.html
+wwwroot\outbox\20251118_182957_Alerta Cuidémoslos_ Estado crítico de Juan Perez.html
+wwwroot\outbox\20251118_190245_Alerta Cuidémoslos_ Estado crítico de Juan Perez.html
+wwwroot\outbox\20251118_190249_Alerta Cuidémoslos_ Estado crítico de Juan Perez.html

@@ -60,10 +60,10 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
     options.Domain = builder.Configuration["Auth0:Domain"];
     options.ClientId = builder.Configuration["Auth0:ClientId"];
     options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
-    options.CallbackPath = "/callback"; // Opción A
+    options.CallbackPath = "/callback";
 });
 
-// (opcional) Configurar opciones del cookie SIN volver a registrarlo
+// Configuración del cookie
 builder.Services.Configure<CookieAuthenticationOptions>(
     CookieAuthenticationDefaults.AuthenticationScheme,
     options =>
@@ -72,16 +72,20 @@ builder.Services.Configure<CookieAuthenticationOptions>(
         options.Cookie.SameSite = SameSiteMode.Lax;
         options.SlidingExpiration = true;
         options.ExpireTimeSpan = TimeSpan.FromHours(8);
+
+        options.LoginPath = "/Auth/Login";
+        options.LogoutPath = "/Auth/Logout";
     });
 
+// Autorización por defecto (todo requiere login salvo AllowAnonymous)
 builder.Services.AddAuthorization(options =>
 {
-    options.FallbackPolicy = options.DefaultPolicy; // exige login por defecto
+    options.FallbackPolicy = options.DefaultPolicy;
 });
 
 var app = builder.Build();
 
-// Proxy headers (Render)
+// Proxy headers (Render / reverso)
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -132,23 +136,54 @@ app.MapSwagger().AllowAnonymous();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// API Key para /api/*
-app.Use(async (ctx, next) =>
-{
-    if (ctx.Request.Path.StartsWithSegments("/api"))
-    {
-        var provided = ctx.Request.Headers["X-Api-Key"].FirstOrDefault();
-        var expected = app.Configuration["API_KEY"];
+// ====== API KEY para /api/* ======
+var apiKeyFromConfig = app.Configuration["API_KEY"];
 
-        if (string.IsNullOrEmpty(expected) || provided != expected)
+if (!string.IsNullOrWhiteSpace(apiKeyFromConfig))
+{
+    app.Use(async (ctx, next) =>
+    {
+        if (ctx.Request.Path.StartsWithSegments("/api"))
         {
-            ctx.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            await ctx.Response.WriteAsync("Unauthorized");
-            return;
+            var provided = ctx.Request.Headers["CLAVE_SUPER_SECRETA_MOBILE"].FirstOrDefault();
+
+            if (provided != apiKeyFromConfig)
+            {
+                ctx.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                await ctx.Response.WriteAsync("Unauthorized");
+                return;
+            }
         }
-    }
-    await next();
-});
+
+        await next();
+    });
+}
+else
+{
+    Log.Warning("API_KEY no está configurada. Los endpoints /api NO están protegidos por API Key.");
+}
+
+// ====== API: Login móvil de paciente por email ======
+app.MapPost("/api/mobile/login", async (AppDbContext db, string email) =>
+{
+    // Ajustá el nombre de las propiedades según tu entidad Patient
+    var patient = await db.Patients
+        .FirstOrDefaultAsync(p => p.Email == email);
+
+    if (patient == null)
+        return Results.NotFound("Paciente no registrado");
+
+    
+    var proEmail = patient.Email ?? "profesional@test.com";
+
+    return Results.Ok(new
+    {
+        id = patient.Id,
+        fullName = patient.FullName,
+        proEmail
+    });
+}).AllowAnonymous();
+
 
 // Healthcheck (público)
 app.MapHealthChecks("/health").AllowAnonymous();
@@ -167,12 +202,11 @@ app.MapGet("/Auth/Login", async (HttpContext ctx) =>
 {
     var returnUrl = ctx.Request.Query["ReturnUrl"].FirstOrDefault();
 
-    // Aceptamos solo URLs locales válidas y que NO apunten a login/logout/callback
     bool isLocal = !string.IsNullOrEmpty(returnUrl) &&
                    returnUrl.StartsWith("/") &&
                    !returnUrl.StartsWith("/Auth/Login", StringComparison.OrdinalIgnoreCase) &&
                    !returnUrl.StartsWith("/Auth/Logout", StringComparison.OrdinalIgnoreCase) &&
-                   !returnUrl.StartsWith("/callback", StringComparison.OrdinalIgnoreCase); // Opción A
+                   !returnUrl.StartsWith("/callback", StringComparison.OrdinalIgnoreCase);
 
     if (!isLocal) returnUrl = "/";
 
@@ -184,7 +218,7 @@ app.MapGet("/Auth/Login", async (HttpContext ctx) =>
     return Results.Empty;
 }).AllowAnonymous();
 
-// Logout: primero cookie local, luego Auth0 (con RedirectUri)
+// Logout
 app.MapGet("/Auth/Logout", async (HttpContext ctx) =>
 {
     var returnUrl = "/";
