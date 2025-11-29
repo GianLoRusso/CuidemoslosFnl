@@ -19,7 +19,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMoodEntryRepository, MoodEntryRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        // BLL (handlers  por convención más adelante)
+        // BLL (handlers más adelante)
 
         // Email / Notificaciones
         //services.AddSingleton<IEmailSender, MailKitEmailSender>();//

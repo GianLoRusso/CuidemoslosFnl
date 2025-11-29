@@ -3,7 +3,7 @@
 @{
     var isAuth = User?.Identity?.IsAuthenticated == true;
     var userName = isAuth ? (User.Identity?.Name ?? "Usuario") : null;
-    Layout = null; // este ES el layout raíz
+    Layout = null; 
 }
 
 <!DOCTYPE html>

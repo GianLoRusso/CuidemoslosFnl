@@ -166,7 +166,7 @@ else
 // ====== API: Login móvil de paciente por email ======
 app.MapPost("/api/mobile/login", async (AppDbContext db, string email) =>
 {
-    // Ajustá el nombre de las propiedades según tu entidad Patient
+    
     var patient = await db.Patients
         .FirstOrDefaultAsync(p => p.Email == email);
 

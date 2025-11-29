@@ -20,7 +20,7 @@ public class MailKitEmailSender : IEmailSender
         msg.Subject = subject;
         msg.Body = new BodyBuilder { HtmlBody = html }.ToMessageBody();
 
-        using var smtp = new SmtpClient();                       // <── usa el alias
+        using var smtp = new SmtpClient();                       // usa el alias
         await smtp.ConnectAsync("localhost", 25, SecureSocketOptions.Auto);
         await smtp.SendAsync(msg);
         await smtp.DisconnectAsync(true);

@@ -7,7 +7,7 @@ public class AuditLog
     // Tipo de bitácora: Business / System / Exception
     public string Category { get; set; } = "Business";
 
-    // Qué pasó (MoodEntry.Created, Email.Sent, User.Login, etc.)
+    // (MoodEntry.Created, Email.Sent, User.Login, etc.)
     public string Action { get; set; } = string.Empty;
 
     // Nivel: Info / Warning / Error
